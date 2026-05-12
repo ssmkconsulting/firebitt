@@ -16,7 +16,7 @@ body {
 }
 
 body {
-  font-family: Impact, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .site-shell {
@@ -77,6 +77,7 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   text-shadow: 0 1px 2px #000;
+  font-family: Impact, "Arial Black", "Franklin Gothic Heavy", sans-serif;
 }
 
 .main-nav a + a {
@@ -114,6 +115,27 @@ body {
   background-image: url("assets/firebitt-features-bg.png");
 }
 
+.hero-content,
+.features-content,
+.mobile-section {
+  display: none;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 22px;
+  border: 2px solid var(--yellow);
+  color: var(--yellow);
+  font-family: Impact, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -127,38 +149,201 @@ body {
 }
 
 @media (max-width: 760px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    background: #050505;
+  }
+
   .site-shell {
     width: 100%;
+    max-width: 100%;
+    overflow: visible;
   }
 
   .brand-header {
     height: auto;
-    padding: 0 0 24px;
+    min-height: 0;
+    padding: 16px 12px 18px;
+    border-bottom: 1px solid rgba(255, 208, 0, 0.85);
   }
 
   .brand-mark {
-    width: min(96vw, 560px);
-    max-width: none;
+    width: 100%;
+    max-width: 350px;
   }
 
   .main-nav {
-    max-width: 100%;
-    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    width: min(100%, 390px);
+    max-width: min(100%, 390px);
+    height: auto;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--yellow);
   }
 
   .main-nav::after {
-    width: 100vw;
+    display: none;
+  }
+
+  .main-nav a {
+    flex: 0 0 50%;
+    min-width: 0;
+    width: 50%;
+    min-height: 54px;
+    border-top: 1px solid rgba(255, 208, 0, 0.42);
+    font-size: clamp(15px, 4.5vw, 20px);
+    overflow: hidden;
+  }
+
+  .main-nav a:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .main-nav a.active::after {
+    bottom: 8px;
+  }
+
+  .hero-panel,
+  .features-panel {
+    background-size: cover;
   }
 
   .hero-panel {
-    height: min(390px, 92vw);
-    background-size: auto 100%;
-    background-position: left top;
+    display: flex;
+    min-height: 560px;
+    height: auto;
+    align-items: flex-end;
+    padding: 150px 18px 28px;
+    background-image:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.8) 62%, #050505 100%),
+      url("assets/firebitt-hero.png");
+    background-position: 66% top;
   }
 
   .features-panel {
-    height: 260px;
-    background-size: auto 100%;
-    background-position: left top;
+    height: auto;
+    padding: 30px 18px;
+    background-image:
+      linear-gradient(180deg, rgba(5, 5, 5, 0.92), rgba(5, 5, 5, 0.94)),
+      url("assets/firebitt-features-bg.png");
+    background-position: center top;
+    border-bottom: 1px solid rgba(255, 208, 0, 0.65);
+  }
+
+  .hero-content,
+  .features-content,
+  .mobile-section {
+    display: block;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 354px;
+    overflow: hidden;
+  }
+
+  .features-content,
+  .mobile-section > * {
+    max-width: 354px;
+  }
+
+  .hero-content p:first-child,
+  .features-content h2,
+  .mobile-section h2 {
+    margin: 0;
+    color: #fff;
+    font-family: Impact, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+    font-size: clamp(20px, 6vw, 28px);
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  .hero-content p:first-child {
+    margin-bottom: 8px;
+    font-size: clamp(17px, 4.7vw, 22px);
+    font-style: italic;
+  }
+
+  .hero-content h1 {
+    max-width: 330px;
+    margin: 0;
+    color: var(--yellow);
+    font-family: Impact, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+    font-size: clamp(48px, 13.5vw, 58px);
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
+
+  .hero-content p:nth-of-type(2),
+  .features-content p,
+  .mobile-section p,
+  .feature-list span {
+    color: #f2f2f2;
+    font-size: 17px;
+    line-height: 1.45;
+    overflow-wrap: break-word;
+  }
+
+  .hero-content p:nth-of-type(2) {
+    max-width: 32rem;
+    margin: 18px 0 20px;
+  }
+
+  .features-content h2 span,
+  .features-content h2 {
+    color: var(--yellow);
+  }
+
+  .features-content > p {
+    margin: 12px 0 22px;
+  }
+
+  .feature-list {
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .feature-list li {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 16px;
+    border: 1px solid rgba(255, 208, 0, 0.55);
+    background: rgba(255, 255, 255, 0.045);
+  }
+
+  .feature-list strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--yellow);
+    font-family: Impact, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+    font-size: 22px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .mobile-section {
+    padding: 30px 18px;
+    border-bottom: 1px solid rgba(255, 208, 0, 0.65);
+    background: #050505;
+  }
+
+  .mobile-section h2 {
+    color: var(--yellow);
+  }
+
+  .contact-section {
+    padding-bottom: 42px;
   }
 }

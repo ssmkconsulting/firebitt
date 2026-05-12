@@ -132,7 +132,8 @@ body {
   }
 
   .brand-header {
-    height: 178px;
+    height: auto;
+    padding: 0 0 24px;
   }
 
   .brand-mark {
@@ -150,14 +151,14 @@ body {
   }
 
   .hero-panel {
-    height: 390px;
+    height: min(390px, 92vw);
     background-size: auto 100%;
-    background-position: 38% top;
+    background-position: left top;
   }
 
   .features-panel {
     height: 260px;
     background-size: auto 100%;
-    background-position: 13% top;
+    background-position: left top;
   }
 }

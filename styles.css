@@ -1,0 +1,163 @@
+:root {
+  --yellow: #ffd000;
+  --black: #030303;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--black);
+  color: #fff;
+}
+
+body {
+  font-family: Impact, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+}
+
+.site-shell {
+  width: min(100vw, 1536px);
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #000;
+}
+
+.brand-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: clamp(190px, 20.51vw, 315px);
+  background: #000;
+  border-bottom: 1px solid var(--yellow);
+}
+
+.brand-mark {
+  display: block;
+  width: min(66.4vw, 1020px);
+  max-width: calc(100% - 32px);
+  height: auto;
+}
+
+.main-nav {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  height: clamp(48px, 3.78vw, 58px);
+  max-width: 720px;
+  margin: 0 auto;
+  background: #030303;
+}
+
+.main-nav::after {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100vw;
+  height: 1px;
+  transform: translateX(-50%);
+  background: var(--yellow);
+  content: "";
+}
+
+.main-nav a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f7f7f7;
+  font-size: clamp(12px, 1.04vw, 16px);
+  font-weight: 900;
+  letter-spacing: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px #000;
+}
+
+.main-nav a + a {
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.main-nav a.active {
+  color: var(--yellow);
+}
+
+.main-nav a.active::after {
+  position: absolute;
+  bottom: 12px;
+  width: 25px;
+  height: 2px;
+  background: var(--yellow);
+  content: "";
+}
+
+.hero-panel,
+.features-panel {
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.hero-panel {
+  height: clamp(300px, 25.39vw, 390px);
+  background-image: url("assets/firebitt-hero.png");
+  border-bottom: 1px solid var(--yellow);
+}
+
+.features-panel {
+  height: clamp(245px, 16.93vw, 260px);
+  background-image: url("assets/firebitt-features-bg.png");
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  .site-shell {
+    width: 100%;
+  }
+
+  .brand-header {
+    height: 178px;
+  }
+
+  .brand-mark {
+    width: min(96vw, 560px);
+    max-width: none;
+  }
+
+  .main-nav {
+    max-width: 100%;
+    height: 52px;
+  }
+
+  .main-nav::after {
+    width: 100vw;
+  }
+
+  .hero-panel {
+    height: 390px;
+    background-size: auto 100%;
+    background-position: 38% top;
+  }
+
+  .features-panel {
+    height: 260px;
+    background-size: auto 100%;
+    background-position: 13% top;
+  }
+}
